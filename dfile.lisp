@@ -33,17 +33,18 @@
 ;;;;
 ;;;; Example:
 ;;;;
-;;;;   (let ((df (dfile:lookup-dfile "customers")))
-;;;;     (dfile:open-dfile df :direction :output)
-;;;;     (dfile:write-record df '(("id" . "1") ("name" . "Ada")))
-;;;;     (dfile:close-dfile df)
-;;;;     (dfile:open-dfile df :direction :input)
-;;;;     (loop for rec = (dfile:read-record df)
+;;;;   (let ((df (dfile-lib:lookup-dfile "customers")))
+;;;;     (dfile-lib:open-dfile df :direction :output)
+;;;;     (dfile-lib:write-record df '(("id" . "1") ("name" . "Ada")))
+;;;;     (dfile-lib:close-dfile df)
+;;;;     (dfile-lib:open-dfile df :direction :input)
+;;;;     (loop for rec = (dfile-lib:read-record df)
 ;;;;           while rec
 ;;;;           do (print rec))
-;;;;     (dfile:close-dfile df))
+;;;;     (dfile-lib:close-dfile df))
 
-(defpackage #:dfile
+(defpackage #:dfile-lib
+  (:nicknames #:dfile)
   (:use #:common-lisp)
   (:export
    ;; configuration
@@ -73,7 +74,7 @@
    ;; conditions
    #:dfile-error))
 
-(in-package #:dfile)
+(in-package #:dfile-lib)
 
 ;;; ------------------------------------------------------------------
 ;;; Globals and conditions
